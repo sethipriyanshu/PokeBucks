@@ -120,7 +120,7 @@
                         {
                          "name":"text",
                          "type":"string",
-                         "value":"Hey there, I'm Ash—your financial literacy PokéGuide!  \n Just like training your first Pokémon,\nwe'll start with the basics,\nlevel up your money skills,\nand evolve your finances into something unstoppable.\nthe top left to leave the game."
+                         "value":"Hey there, I'm Ash\nyour financial literacy PokéGuide!  \n Just like training your first Pokemon,\nwe'll start with the basics,\nlevel up your money skills,\nand evolve your finances into something unstoppable.\nthe top left to leave the game."
                         }, 
                         {
                          "name":"text_es",
@@ -160,7 +160,7 @@
                         {
                          "name":"text",
                          "type":"string",
-                         "value":"My\nResearch"
+                         "value":"Try allocating 50% \n of your income to needs,\n 30% to wants, and 20% to \n savings and debt repayment."
                         }, 
                         {
                          "name":"text_es",
@@ -341,7 +341,7 @@
                         {
                          "name":"text",
                          "type":"string",
-                         "value":"I will defeat\nyou, rival!!!"
+                         "value": "I will defeat\nyou,rival!!!</a>"
                         }, 
                         {
                          "name":"text_es",

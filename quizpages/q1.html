@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PokeBucks</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body {
+            background: url('https://assets.pokemon.com/assets/cms2/img/misc/virtual-backgrounds/masters/ex-battle-1.jpg') no-repeat center center/cover;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+            border: 4px solid #ffcc00;
+            position: relative;
+            z-index: 1;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            background-color: #ffcc00;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: 2px solid #000;
+        }
+        .options li:hover {
+            background-color: #ff9900;
+        }
+        .correct {
+            background-color: #4CAF50 !important;
+        }
+        .wrong {
+            background-color: #FF0000 !important;
+        }
+        .pokeball {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+        }
+        .pokeball:nth-child(1) { top: 10%; left: 5%; }
+        .pokeball:nth-child(2) { top: 80%; left: 10%; }
+        .pokeball:nth-child(3) { top: 20%; right: 5%; }
+        .pokeball:nth-child(4) { bottom: 10%; right: 10%; }
+        .pokeball:nth-child(5) { top: 40%; left: 20%; }
+        .pokeball:nth-child(6) { bottom: 30%; right: 20%; }
+        .pokeball:nth-child(7) { top: 70%; left: 50%; }
+        .pokeball:nth-child(8) { bottom: 50%; right: 40%; }
+        .feedback {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .back-button {
+            display: none;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    
+    <div class="card">
+        <h3>You receive a $1,000 scholarship refund. What’s the best way to allocate it?</h3>
+        <ul class="options">
+            <li onclick="checkAnswer(this, false)">Spend it all on entertainment and dining out</li>
+            <li onclick="checkAnswer(this, true)">Save 50%, invest 30%, and use 20% for emergencies</li>
+            <li onclick="checkAnswer(this, false)">Put it all into a high-risk cryptocurrency investment</li>
+            <li onclick="checkAnswer(this, false)">Ignore it and leave it in your checking account</li>
+        </ul>
+        <p class="feedback" id="feedback"></p>
+        <button class="back-button" id="backButton" onclick="goBackToMap()">Show Progress</button>
+    </div>
+
+    <script>
+        function checkAnswer(element, isCorrect) {
+            let options = document.querySelectorAll('.options li');
+            options.forEach(option => option.classList.remove('correct', 'wrong'));
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                document.getElementById('feedback').innerText = "You Win the Battle!! Smart financial planning helps secure your future.";
+            } else {
+                element.classList.add('wrong');
+                document.getElementById('feedback').innerText = "You Lost the Battle! The best way to allocate the refund is to save 50%, invest 30%, and use 20% for emergencies.";
+            }
+            document.getElementById('backButton').style.display = 'block';
+        }
+
+        function goBackToMap() {
+            window.location.href = './pikachuu.html';
+        }
+    </script>
+</body>
+
+</html>

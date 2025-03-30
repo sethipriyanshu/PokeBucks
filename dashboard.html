@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Analysis</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .card {
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .avoidable-badge {
+      background-color: #fff3cd;
+      color: #856404;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      margin-left: 0.5rem;
+    }
+    .savings-text {
+      color: #28a745;
+    }
+    .tip-card {
+      border-left: 4px solid #ffc107;
+      margin-bottom: 10px;
+    }
+    .summary-card {
+      text-align: center;
+      padding: 15px;
+    }
+    .summary-card .amount {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .summary-card .change {
+      font-size: 0.8rem;
+      color: #6c757d;
+    }
+    .chart-container {
+      position: relative;
+      height: 300px;
+      width: 100%;
+    }
+
+    .pokeball {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+        }
+        .pokeball:nth-child(1) { top: 10%; left: 5%; }
+        .pokeball:nth-child(2) { top: 80%; left: 10%; }
+        .pokeball:nth-child(3) { top: 20%; right: 5%; }
+        .pokeball:nth-child(4) { bottom: 10%; right: 10%; }
+        .pokeball:nth-child(5) { top: 40%; left: 20%; }
+        .pokeball:nth-child(6) { bottom: 30%; right: 20%; }
+        .pokeball:nth-child(7) { top: 70%; left: 50%; }
+        .pokeball:nth-child(8) { bottom: 50%; right: 40%; }
+  </style>
+</head>
+<body>
+
+<!-- A grey horizontal navbar that becomes vertical on small screens -->
+<nav class="navbar navbar-expand-sm bg-dark">
+
+    <div class="container-fluid">
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <h2><a class="nav-link" href="#" style="color: white;">PokeBucks</a></h2>
+        </li>
+       
+      </ul>
+    </div>
+  
+  </nav>
+  <br>
+
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    <img src="pokeball.png" class="pokeball" alt="Pokeball">
+    
+      
+
+  <div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1>Financial Analysis</h1>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card summary-card">
+          <div class="card-body">
+            <h5 class="card-title">Total Income</h5>
+            <div class="amount">$4,550.00</div>
+            <div class="change">+12.5% from last month</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card summary-card">
+          <div class="card-body">
+            <h5 class="card-title">Total Expenses</h5>
+            <div class="amount">$3,200.00</div>
+            <div class="change">+4.3% from last month</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card summary-card">
+          <div class="card-body">
+            <h5 class="card-title">Savings</h5>
+            <div class="amount">$1,350.00</div>
+            <div class="change">+28.4% from last month</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card summary-card">
+          <div class="card-body">
+            <h5 class="card-title">Avoidable Purchases</h5>
+            <div class="amount">$520.00</div>
+            <div class="change">-8.1% from last month</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Expenses Section and Avoidable Purchases Section in the same row -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Expenses</h5>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th class="text-end">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rent</td>
+                  <td>Housing</td>
+                  <td>Mar 1, 2023</td>
+                  <td class="text-end">$1,500.00</td>
+                </tr>
+                <tr>
+                  <td>Groceries</td>
+                  <td>Food</td>
+                  <td>Mar 5, 2023</td>
+                  <td class="text-end">$420.00</td>
+                </tr>
+                <tr>
+                  <td>Utilities</td>
+                  <td>Housing</td>
+                  <td>Mar 10, 2023</td>
+                  <td class="text-end">$180.00</td>
+                </tr>
+                <tr>
+                  <td>Dining Out <span class="avoidable-badge">Avoidable</span></td>
+                  <td>Food</td>
+                  <td>Mar 15, 2023</td>
+                  <td class="text-end">$320.00</td>
+                </tr>
+                <tr>
+                  <td>Subscription Services <span class="avoidable-badge">Avoidable</span></td>
+                  <td>Entertainment</td>
+                  <td>Mar 18, 2023</td>
+                  <td class="text-end">$80.00</td>
+                </tr>
+                <tr>
+                  <td>Transportation</td>
+                  <td>Travel</td>
+                  <td>Mar 20, 2022023</td>
+                  <td class="text-end">$150.00</td>
+                </tr>
+                <tr>
+                  <td>Online Shopping <span class="avoidable-badge">Avoidable</span></td>
+                  <td>Shopping</td>
+                  <td>Mar 25, 2023</td>
+                  <td class="text-end">$120.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avoidable Purchases Section -->
+      <div class="col-md-5">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">
+              <i class="bi bi-exclamation-circle text-warning"></i> Avoidable Purchases
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-4">
+              <div class="d-flex justify-content-between mb-1">
+                <span>Total Avoidable</span>
+                <span>$520.00</span>
+              </div>
+              <div class="d-flex justify-content-between mb-1">
+                <span>Potential Savings</span>
+                <span class="savings-text">$340.00</span>
+              </div>
+              <div class="progress mb-2">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="text-center text-muted small">
+                You could save up to 65% on these purchases
+              </div>
+            </div>
+
+            <div class="border-bottom pb-3 mb-3">
+              <div class="d-flex justify-content-between mb-1">
+                <span class="fw-bold">Dining Out</span>
+                <span class="fw-bold">$320.00</span>
+              </div>
+              <div class="d-flex justify-content-between small">
+                <span class="text-muted">Cook at home more often</span>
+                <span class="savings-text">Save $200.00</span>
+              </div>
+            </div>
+
+            <div class="border-bottom pb-3 mb-3">
+              <div class="d-flex justify-content-between mb-1">
+                <span class="fw-bold">Subscription Services</span>
+                <span class="fw-bold">$80.00</span>
+              </div>
+              <div class="d-flex justify-content-between small">
+                <span class="text-muted">Cancel unused subscriptions</span>
+                <span class="savings-text">Save $50.00</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="d-flex justify-content-between mb-1">
+                <span class="fw-bold">Online Shopping</span>
+                <span class="fw-bold">$120.00</span>
+              </div>
+              <div class="d-flex justify-content-between small">
+                <span class="text-muted">Implement 24-hour purchase rule</span>
+                <span class="savings-text">Save $90.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Financial Tips Section -->
+      <div class="card mt-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="card-title mb-0">
+            <i class="bi bi-lightbulb text-warning"></i> Financial Tips
+          </h5>
+          <a href="/index.html" class="btn btn-primary btn-sm">Start Learning</a> <!-- Button moved here -->
+        </div>
+        <div class="card-body">
+          <ul class="nav nav-tabs" id="tipsTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="saving-tab" data-bs-toggle="tab" data-bs-target="#saving" type="button" role="tab">Saving</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="spending-tab" data-bs-toggle="tab" data-bs-target="#spending" type="button" role="tab">Spending</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="investing-tab" data-bs-toggle="tab" data-bs-target="#investing" type="button" role="tab">Investing</button>
+            </li>
+          </ul>
+          <div class="tab-content mt-3" id="tipsTabContent">
+            <div class="tab-pane fade show active" id="saving" role="tabpanel">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card tip-card">
+                    <div class="card-body">
+                      <h5 class="card-title">50/30/20 Rule</h5>
+                      <p class="card-text">Try allocating 50% of your income to needs, 30% to wants, and 20% to savings and debt repayment.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card tip-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Emergency Fund</h5>
+                      <p class="card-text">Aim to save 3-6 months of essential expenses in an easily accessible account for emergencies.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card tip-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Automate Your Savings</h5>
+                      <p class="card-text">Set up automatic transfers to your savings account on payday to make saving effortless.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="spending" role="tabpanel">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card tip-card">
+                    <div class="card-body">
+                      <h5 class="card-title">24-Hour Rule</h5>
+                      <p class="card-text">Wait 24 hours before making non-essential purchases over $50 to curb impulse spending.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card tip-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Track Your Spending</h5>
+                      <p class="card-text">Use apps or spreadsheets to track your expenses and identify areas where you can cut back.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card tip-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Review Your Subscriptions</h5>
+                      <p class="card-text">Regularly review subscriptions and cancel those you no longer use to save money.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="investing" role="tabpanel">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card tip-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Start Early</h5>
+                      <p class="card-text">The earlier you start investing, the more you can take advantage of compound interest.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card tip-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Diversify</h5>
+                      <p class="card-text">Don’t put all your money in one investment; diversify across stocks, bonds, and other assets.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card tip-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Educate Yourself</h5>
+                      <p class="card-text">Take time to understand the basics of investing before you jump in.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
